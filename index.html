@@ -13,15 +13,43 @@
   <link rel="stylesheet" href="./assets/style.css">
 </head>
 
-<body>
+<body class="bg-light">
   <header>
     <nav class="navbar navbar-expand navbar-light bg-fade-primary">
-      <div class="nav navbar-nav">
-        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="#">Home</a>
+      <div class="nav navbar-nav w-100 d-flex justify-content-between bg-fade-primary">
+        <a class="nav-item nav-link active text-light" href="#">
+          <h4>Master of Tasks</h4> <span class="sr-only">(current)</span>
+        </a>
+        <button class="btn btn-outline-warning" data-toggle="collapse" data-target="#newListForm">+new
+          list</button>
+        <div class="dropleft open">
+          <button class="btn btn-outline-light dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Your Lists
+          </button>
+          <div class="dropdown-menu" aria-labelledby="triggerId">
+            <button class="dropdown-item" href="#">Action</button>
+          </div>
+        </div>
       </div>
     </nav>
+    <div class="container">
+      <div id="newListForm" class="row collapse justify-content-center" data-toggle="collapse">
+        <div class="form-group col-5  p-3 bg-light shadow" onsubmit="app.createList(event)">
+          <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+            placeholder="enter list name..">
+          <button class="btn btn-success col-2">+</button>
+        </div>
+      </div>
+    </div>
   </header>
+  <main>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-3"></div>
+      </div>
+    </div>
+  </main>
 
 
 
