@@ -14,33 +14,33 @@ export default class List {
   get Template() {
     let subtemplate = ''
 
-    subtemplate + `
-    <div id="${this.id}" class="col-4">
+    subtemplate += `
+    <div id="list-${this.id}" class="col-4">
           <div class="p-2">
             <div class="row p-1 m-3 bg-fade-primary text-light shadow-sm align-items-center">
               <div class="col px-0 pl-1 p-1">
                 <h5 class="mb-0">${this.name}</h5>
               </div>
-              <button class="col-2 btn-list" data-toggle="collapse" data-target="#createTaskForm">+</button>
-              <button class="col-2 btn-list">x</button>
-              <div id="createTaskForm" data-toggle="collapse" class="col-12 collapse">
-                <div class="row form-group align-content-center" onsubmit="createTask(event, ${this.id})">
-                  <input type="text" class="form-control col rounded-0 bg-light-grey" name="" id=""
+              <button class="col-2 btn-list" data-toggle="collapse" data-target="#createTaskForm-${this.id}">+</button>
+              <button class="col-2 btn-list" onclick="app.listController.deleteList('${this.id}')">x</button>
+              <div id="createTaskForm-${this.id}" data-toggle="collapse" class="col-12 collapse">
+                <form class="row form-group align-content-center" onsubmit="app.listController.addTask(event, '${this.id}')">
+                  <input type="text" class="form-control col rounded-0 bg-light-grey" name="newTask" id="" required
                     aria-describedby="helpId" placeholder="enter task name..">
                   <button class="col-2 bg-dark btn-list d-flex align-items-center text-center" data-toggle="collapse"
                     data-target="#createTaskForm">+</button>
-                </div>
+                </form>
               </div>
               <div class="col-12 bg-light-grey ">
                 <div class="row text-dark">`
 
-    this.tasks.array.forEach((task, index) => {
+    this.tasks.forEach((task, index) => {
       subtemplate += `
                   <div class="col-12 pl-2 border-bottom">
                   <div class="row p-2 align-items-center">
                   <div class="col">${task}</div>
                   <button class="btn-task d-flex align-content-center p-1 px-2 text-center"
-                  onclick="app.deleteTask(${index})">x</button>
+                  onclick="app.listController.deleteTask(${index}, '${this.id}')">x</button>
                   </div>
                   </div>
                   `});

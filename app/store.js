@@ -25,11 +25,38 @@ class Store {
     return _state;
   }
 
+  createList(newList) {
+    _state.lists.push(newList)
+    console.log("list added", newList)
+    this.saveState()
+  }
+
+  deleteList(listIndex) {
+    _state.lists.splice(listIndex, 1)
+    console.log("list removed", listIndex)
+    this.saveState()
+  }
+
+  addTask(task, listIndex) {
+    console.log(task, listIndex)
+    _state.lists[listIndex].tasks.push(task)
+    console.log("task Added", task)
+    this.saveState()
+  }
+
+  deleteTask(taskIndex, listIndex) {
+    console.log(taskIndex, listIndex)
+    _state.lists[listIndex].tasks.splice(taskIndex, 1)
+    console.log("task Removed", taskIndex)
+    this.saveState()
+  }
+
   //NOTE call saveState everytime you change the state in any way
   saveState() {
     localStorage.setItem("TaskMaster", JSON.stringify(_state));
   }
 }
 
-const store = new Store();
-export default store;
+const _store = new Store();
+export { _store };
+

@@ -14,7 +14,7 @@
 </head>
 
 <body class="bg-light-grey">
-  <header>
+  <header class="sticky-top">
     <nav class="navbar navbar-expand navbar-light bg-fade-primary">
       <div class="nav navbar-nav w-100 d-flex justify-content-between bg-fade-primary">
         <a class="nav-item nav-link active text-light" href="#">
@@ -27,19 +27,19 @@
             aria-haspopup="true" aria-expanded="false">
             Your Lists
           </button>
-          <div class="dropdown-menu" aria-labelledby="triggerId">
+          <div id="drop-down" class="dropdown-menu" aria-labelledby="triggerId">
             <button class="dropdown-item" href="#">Action</button>
+            </ul>
           </div>
         </div>
       </div>
     </nav>
     <div class="container">
       <div id="newListForm" class="row collapse justify-content-center" data-toggle="collapse">
-        <div class="form-group col-5  p-3 bg-light shadow" onsubmit="app.listController.createList(event)">
-          <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
-            placeholder="enter list name..">
-          <button class="btn btn-success col-2">+</button>
-        </div>
+        <form class="form-group col-5  p-3 bg-light shadow" onsubmit="app.listController.createList(event)">
+          <input type="text" class="form-control" name="listName" id="" required placeholder="enter list name..">
+          <button class="btn btn-success col-2" data-toggle="collapse" data-target="#newListForm">+</button>
+        </form>
       </div>
     </div>
   </header>
@@ -56,12 +56,12 @@
               <button class="col-2 btn-list" data-toggle="collapse" data-target="#createTaskForm">+</button>
               <button class="col-2 btn-list">x</button>
               <div id="createTaskForm" data-toggle="collapse" class="col-12 collapse">
-                <div class="row form-group align-content-center" onsubmit="createTask(event, 'listId')">
+                <form class="row form-group align-content-center" onsubmit="createTask(event, 'listId')">
                   <input type="text" class="form-control col rounded-0 bg-light-grey" name="" id=""
                     aria-describedby="helpId" placeholder="enter task name..">
                   <button class="col-2 bg-dark btn-list d-flex align-items-center text-center" data-toggle="collapse"
-                    data-target="#createTaskForm">+</button>
-                </div>
+                    data-target="#createTaskForm" type="submit">+</button>
+                </form>
               </div>
               <div class="col-12 bg-light-grey ">
                 <div class="row text-dark">
@@ -97,7 +97,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-  <script src="./app/main.js"></script>
+  <script type="module" src="./app/main.js"></script>
 </body>
 
 </html>
